@@ -1,13 +1,570 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.google.com/specimen/League+Spartan');
+
+:root {
+    /* Theme 1 */
+    /* Backgrounds */
+    --Very-dark-desaturated-blue1 /*(main background)*/: hsl(222, 26%, 31%);
+    --Very-dark-desaturated-blue2 /*(toggle background, keypad background)*/: hsl(223, 31%, 20%);
+    --Very-dark-desaturated-blue3 /*(screen background)*/: hsl(224, 36%, 15%);
+
+    /* Keys */
+    --Desaturated-dark-blue1 /*(key background)*/: hsl(225, 21%, 49%);
+    --Desaturated-dark-blue2 /*(key shadow)*/: hsl(224, 28%, 35%);
+
+    --Red /*(key background, toggle)*/: hsl(6, 63%, 50%);
+    --Dark-red /*(key shadow)*/: hsl(6, 70%, 34%);
+
+    --Light-grayish-orange /*(key background)*/: hsl(30, 25%, 89%);
+    --Grayish-orange /*(key shadow)*/: hsl(28, 16%, 65%);
+
+    /* Text */
+    --Very-dark-grayish-blue: hsl(221, 14%, 31%);
+    --White: hsl(0, 0%, 100%);
+
+
+    /* Theme 2 */
+    /* Backgrounds */
+    --Light-gray /*(main background)*/: hsl(0, 0%, 90%);
+    --Grayish-red /*(toggle background, keypad background)*/: hsl(0, 5%, 81%);
+    --Very-light-gray /*(screen background)*/: hsl(0, 0%, 93%);
+
+    /* Keys */
+    --Dark-moderate-cyan /*(key background)*/: hsl(185, 42%, 37%);
+    --Very-dark-cyan /*(key shadow)*/: hsl(185, 58%, 25%);
+
+    --Orange /*(key background, toggle)*/: hsl(25, 98%, 40%);
+    --Dark-orange /*(key shadow)*/: hsl(25, 99%, 27%);
+
+    --Light-grayish-yellow /*(key background)*/: hsl(45, 7%, 89%);
+    --Dark-grayish-orange /*(key shadow)*/: hsl(35, 11%, 61%);
+
+    /* Text */
+    --Very-dark-grayish-yellow: hsl(60, 10%, 19%);
+    --White /*(text)*/: hsl(0, 0%, 100%);
+
+
+    /* Theme 3 */
+    /* Backgrounds */
+    --Very-dark-violet1 /*(main background)*/: hsl(268, 75%, 9%);
+    --Very-dark-violet2 /*(toggle background, keypad background, screen background)*/: hsl(268, 71%, 12%);
+
+    /* Keys */
+    --Dark-violet /*(key background)*/: hsl(281, 89%, 26%);
+    --Vivid-magenta /*(key shadow)*/: hsl(285, 91%, 52%);
+
+    --Pure-cyan /*(key background, toggle)*/: hsl(176, 100%, 44%);
+    --Soft-cyan /*(key shadow)*/: hsl(177, 92%, 70%);
+
+    --Very-dark-violet /*(key background)*/: hsl(268, 47%, 21%);
+    --Dark-magenta /*(key shadow)*/: hsl(290, 70%, 36%);
+
+    /* Text */
+    --Light-yellow: hsl(52, 100%, 62%);
+    --Very-dark-blue: hsl(198, 20%, 13%);
+    --White /*(text)*/: hsl(0, 0%, 100%);
+}
+@media (max-width: 500px) {
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.App {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+.calculator {
+    width: 80%;
+    min-width: 40%;
+    height: 75%;
+}
+
+.title {
+    width: 100%;
+    height: 8.5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.calc {
+    font-family: 'League Spartan' sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+}
+
+.theme {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: max-content;
+    align-items: flex-end;
+}
+
+.theme-numbers {
+    font-size: 16px;
+    font-family: 'League Spartan' sans-serif;
+    font-weight: 700;
+    letter-spacing: 6px;
+    margin-bottom: 5px;
+}
+
+.theme-button {
+    display: flex;
+    align-items: center;
+}
+
+.theme-button-title {
+    letter-spacing: 0.5px;
+    font-size: 14px;
+    font-family: sans-serif;
+    font-weight: 700;
+    margin-right: 20px;
+}
+
+.button {
+    width: 69px;
+    height: 20px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    padding: 3.5px;
+}
+
+.ball {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+    min-height: 20%;
+    margin-top: 35px;
+    border-radius: 6px;
+    word-wrap: break-word;
+    word-break: break-all;
+    padding: 20px; 
+    font-family: 'League Spartan' sans-serif;
+    font-weight: 700;
+}
+
+.previous,
+.current {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.previous {
+    padding-bottom: 15px;
+    font-size: 18px;
+}
+
+.current {
+    font-size: 36px;
+}
+
+.previous-operand,
+.current-operand {
+   text-align: right;
+}
+
+.keypad {
+    width: 100%;
+    height: 62.5%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+    border-radius: 6px;
+    opacity: 0.9;
+    padding: 20px;
+}
+
+.flex {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    gap: 15px;
+}
+
+.flex > button {
+    width: 25%;
+    height: 100%;
+    outline: none;
+    border: unset;
+    border-radius: 7px;
+    font-size: 26px;
+    font-weight: 700;
+    font-family: 'League Spartan' sans-serif;
+    cursor: pointer;
+}
+
+#delete, #reset {
+    font-size: 16px;
+    font-family: 'League Spartan' sans-serif;
+    font-weight: 700;
+}
+
+#reset {
+    width: 50%;
+}
+
+#equal {
+    width: 50%;
+    font-size: 16px;
+    font-family: 'League Spartan' sans-serif;
+    font-weight: 700;
+}
+}
+
+
+
+
+@media (max-width: 1000px) {
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.App {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calculator {
+    width: 60%;
+    height: 75%;
+}
+
+.title {
+    width: 100%;
+    height: 8.5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.calc {
+    font-family: 'League Spartan' sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+}
+
+.theme {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: max-content;
+    align-items: flex-end;
+}
+
+.theme-numbers {
+    font-size: 16px;
+    font-family: 'League Spartan' sans-serif;
+    font-weight: 700;
+    letter-spacing: 6px;
+    margin-bottom: 5px;
+}
+
+.theme-button {
+    display: flex;
+    align-items: center;
+}
+
+.theme-button-title {
+    letter-spacing: 0.5px;
+    font-size: 14px;
+    font-family: sans-serif;
+    font-weight: 700;
+    margin-right: 20px;
+}
+
+.button {
+    width: 69px;
+    height: 20px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    padding: 3.5px;
+}
+
+.ball {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+    min-height: 20%;
+    margin-top: 35px;
+    border-radius: 6px;
+    word-wrap: break-word;
+    word-break: break-all;
+    padding: 20px; 
+    font-family: 'League Spartan' sans-serif;
+    font-weight: 700;
+}
+
+.previous,
+.current {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.previous {
+    padding-bottom: 15px;
+    font-size: 18px;
+}
+
+.current {
+    font-size: 36px;
+}
+
+.previous-operand,
+.current-operand {
+   text-align: right;
+}
+
+.keypad {
+    width: 100%;
+    height: 62.5%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+    border-radius: 6px;
+    opacity: 0.9;
+    padding: 20px;
+}
+
+.flex {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    gap: 15px;
+}
+
+.flex > button {
+    width: 25%;
+    height: 100%;
+    outline: none;
+    border: unset;
+    border-radius: 7px;
+    font-size: 26px;
+    font-weight: 700;
+    font-family: 'League Spartan' sans-serif;
+    cursor: pointer;
+}
+
+#delete, #reset {
+    font-size: 18px;
+    color: white;
+    font-family: 'League Spartan' sans-serif;
+    font-weight: 700;
+}
+
+#reset {
+    width: 50%;
+}
+
+#equal {
+    width: 50%;
+    font-size: 18px;
+    font-family: 'League Spartan' sans-serif;
+    font-weight: 700;
+}
+}
+
+
+
+
+@media (min-width: 1000px) {
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.App {
+    height: 100vh;
+    max-height: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calculator {
+    width: 35%;
+    height: 75%;
+    max-height: max-content;
+}
+
+.title {
+    width: 100%;
+    height: 8.5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.calc {
+    font-family: 'League Spartan' sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+}
+
+.theme {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: max-content;
+    align-items: flex-end;
+}
+
+.theme-numbers {
+    font-size: 16px;
+    font-family: 'League Spartan' sans-serif;
+    font-weight: 700;
+    letter-spacing: 6px;
+    margin-bottom: 5px;
+}
+
+.theme-button {
+    display: flex;
+    align-items: center;
+}
+
+.theme-button-title {
+    letter-spacing: 0.5px;
+    font-size: 14px;
+    font-family: sans-serif;
+    font-weight: 700;
+    margin-right: 20px;
+}
+
+.button {
+    width: 69px;
+    height: 20px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    padding: 3.5px;
+}
+
+.ball {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+    min-height: 20%;
+    margin-top: 35px;
+    border-radius: 6px;
+    word-wrap: break-word;
+    word-break: break-all;
+    padding: 20px; 
+    font-family: 'League Spartan' sans-serif;
+    font-weight: 700;
+}
+
+.previous,
+.current {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.previous {
+    padding-bottom: 15px;
+    font-size: 22px;
+}
+
+.current {
+    font-size: 36px;
+}
+
+.previous-operand,
+.current-operand {
+   text-align: right;
+}
+
+.keypad {
+    width: 100%;
+    height: 62.5%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+    border-radius: 6px;
+    opacity: 0.9;
+    padding: 20px;
+}
+
+.flex {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    gap: 15px;
+}
+
+.flex > button {
+    width: 25%;
+    height: 100%;
+    outline: none;
+    border: unset;
+    border-radius: 7px;
+    font-size: 28px;
+    font-weight: 700;
+    font-family: 'League Spartan' sans-serif;
+    cursor: pointer;
+}
+
+#delete, #reset {
+    font-size: 18px;
+    color: white;
+    font-family: 'League Spartan' sans-serif;
+    font-weight: 700;
+}
+
+#reset {
+    width: 50%;
+}
+
+#equal {
+    width: 50%;
+    font-size: 20px;
+    font-family: 'League Spartan' sans-serif;
+    font-weight: 700;
+}
+}
+
