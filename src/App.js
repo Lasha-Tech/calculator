@@ -25,8 +25,10 @@ function reducer(state, {type, payload}) {
         return state
       } 
 
-      if(payload.digit === '.' && state.currentOperand.includes('.')) {
-        return state
+      if(payload.digit === '.') {
+        if(state.currentOperand.indexOf('.') !== -1) {
+          return state
+        }
       } 
 
       return {
@@ -699,7 +701,7 @@ function App() {
             {/* Forth  */}
           <div className="forth-column flex">
             {/* .  */}
-            <DigitButton  digit='.' dispatch={dispatch}
+            <DigitButton  state={currentOperand} digit='.' dispatch={dispatch}
                 style={{
                   width: '25%',
                   height: '100%',

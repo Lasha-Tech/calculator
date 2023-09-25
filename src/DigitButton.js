@@ -1,8 +1,9 @@
 import { ACTIONS } from './App'
 
 
-export function DigitButton ({dispatch, digit, style, click, mouseOver, mouseOut}) {
+export function DigitButton ({dispatch, digit, style, click, mouseOver, mouseOut, state}) {
   return <button  
+    disabled = {digit === '.' && !state}
     style={style}
     onMouseOver={mouseOver} 
     onMouseOut={mouseOut}
